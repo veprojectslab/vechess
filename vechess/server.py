@@ -2,5 +2,5 @@ import vechess.core as vech
 import json
 
 def app(env, start_response):
-    start_response('200 OK', [('Content-Type','text/plain')])
+    start_response('200 OK', [('Content-Type','application/json')])
     return [json.dumps(vech.BoardState_data(), sort_keys=True)]
