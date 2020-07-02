@@ -45,9 +45,13 @@ class BoardState(BaseModel):
     P8B = CharField(max_length=32)
 
 
+class TurnN(BaseModel):
+    value = IntegerField()
+
+
 def initialize():
     with database:
-        database.create_tables([BoardState])
+        database.create_tables([BoardState, TurnN])
 
 
 def BoardState_data():
