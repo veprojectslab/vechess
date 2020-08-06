@@ -9,6 +9,6 @@ setup(name='vechess',
   author_email='meechanic.design@gmail.com',
   url='https://github.com/veprojectslab',
   license="MIT",
-  scripts=['bin/vechessstart.py'],
+  scripts=['bin/vechesscli'],
   packages=['vechess']
 )
