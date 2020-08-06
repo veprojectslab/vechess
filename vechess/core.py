@@ -57,7 +57,7 @@ def initialize():
 def BoardState_data():
     ret = []
     for i in BoardState.select():
-        ret.append({"cmd": "", "id": i.id, "KW": i.KW, "QW": i.QW, "R1W": i.R1W, "N1W": i.N1W, "B1W": i.B1W, "R2W": i.R2W, "N2W": i.N2W, "B2W": i.B2W, "P1W": i.P1W, "P2W": i.P2W, "P3W": i.P3W, "P4W": i.P4W, "P5W": i.P5W, "P6W": i.P6W, "P7W": i.P7W, "P8W": i.P8W, "KB": i.KB, "QB": i.QB, "R1B": i.R1B, "N1B": i.N1B, "B1B": i.B1B, "R2B": i.R2B, "N2B": i.N2B, "B2B": i.B2B, "P1B": i.P1B, "P2B": i.P2B, "P3B": i.P3B, "P4B": i.P4B, "P5B": i.P5B, "P6B": i.P6B, "P7B": i.P7B, "P8B": i.P8B, })
+        ret.append({"cmd": "", "KW": i.KW, "QW": i.QW, "R1W": i.R1W, "N1W": i.N1W, "B1W": i.B1W, "R2W": i.R2W, "N2W": i.N2W, "B2W": i.B2W, "P1W": i.P1W, "P2W": i.P2W, "P3W": i.P3W, "P4W": i.P4W, "P5W": i.P5W, "P6W": i.P6W, "P7W": i.P7W, "P8W": i.P8W, "KB": i.KB, "QB": i.QB, "R1B": i.R1B, "N1B": i.N1B, "B1B": i.B1B, "R2B": i.R2B, "N2B": i.N2B, "B2B": i.B2B, "P1B": i.P1B, "P2B": i.P2B, "P3B": i.P3B, "P4B": i.P4B, "P5B": i.P5B, "P6B": i.P6B, "P7B": i.P7B, "P8B": i.P8B, })
     return ret
 
 
