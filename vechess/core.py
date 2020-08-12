@@ -58,10 +58,14 @@ def initialize():
 
 
 def BoardState_data():
-    ret = []
-    for i in BoardState.select():
-        ret.append({"board_state": {"MoveId": i.id, "KW": i.KW, "QW": i.QW, "R1W": i.R1W, "N1W": i.N1W, "B1W": i.B1W, "R2W": i.R2W, "N2W": i.N2W, "B2W": i.B2W, "P1W": i.P1W, "P2W": i.P2W, "P3W": i.P3W, "P4W": i.P4W, "P5W": i.P5W, "P6W": i.P6W, "P7W": i.P7W, "P8W": i.P8W, "KB": i.KB, "QB": i.QB, "R1B": i.R1B, "N1B": i.N1B, "B1B": i.B1B, "R2B": i.R2B, "N2B": i.N2B, "B2B": i.B2B, "P1B": i.P1B, "P2B": i.P2B, "P3B": i.P3B, "P4B": i.P4B, "P5B": i.P5B, "P6B": i.P6B, "P7B": i.P7B, "P8B": i.P8B, "U": i.U, "MoveTime": i.MoveTime}, "meta_state": MetaState_data()})
-    return ret
+    ret_element = {"meta_state": MetaState_data()}
+    a = get_MetaState_value_by_key("turn_number")
+    if a == None:
+        ret_element["board_state"] = {}
+    else:
+        i = BoardState.get(BoardState.id == a)
+        ret_element["board_state"] = {"MoveId": i.id, "KW": i.KW, "QW": i.QW, "R1W": i.R1W, "N1W": i.N1W, "B1W": i.B1W, "R2W": i.R2W, "N2W": i.N2W, "B2W": i.B2W, "P1W": i.P1W, "P2W": i.P2W, "P3W": i.P3W, "P4W": i.P4W, "P5W": i.P5W, "P6W": i.P6W, "P7W": i.P7W, "P8W": i.P8W, "KB": i.KB, "QB": i.QB, "R1B": i.R1B, "N1B": i.N1B, "B1B": i.B1B, "R2B": i.R2B, "N2B": i.N2B, "B2B": i.B2B, "P1B": i.P1B, "P2B": i.P2B, "P3B": i.P3B, "P4B": i.P4B, "P5B": i.P5B, "P6B": i.P6B, "P7B": i.P7B, "P8B": i.P8B, "U": i.U, "MoveTime": i.MoveTime}
+    return [ret_element]
 
 
 def MetaState_data():
@@ -73,7 +77,7 @@ def MetaState_data():
 
 def get_MetaState_value_by_key(k):
     try:
-        ret = MetaState.get(MetaState.key == k)
+        ret = MetaState.get(MetaState.key == k).value
     except DoesNotExist:
         ret = None
     return ret
@@ -81,7 +85,8 @@ def get_MetaState_value_by_key(k):
 
 def update_or_create_MetaState_kv(k, v):
     if get_MetaState_value_by_key(k) != None:
-        MetaState.update(value = v).where(MetaState.key == k)
+        q = MetaState.update(value = v).where(MetaState.key == k)
+        q.execute()
     else:
         MetaState.create(key = k, value = v)
 
